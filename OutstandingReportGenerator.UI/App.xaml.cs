@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OutstandingReportGenerator.Data.Data;
 using OutstandingReportGenerator.Data.Databases;
+using OutstandingReportGenerator.UI.ViewModels;
 using System.IO;
 using System.Windows;
 
@@ -37,6 +38,7 @@ namespace OutstandingReportGenerator.UI
             await AppHost!.StartAsync();
 
             var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
+            startupForm.DataContext = new OutstandingTestsViewModel();
             startupForm.Show();
 
 

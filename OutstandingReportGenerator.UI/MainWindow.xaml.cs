@@ -17,22 +17,28 @@ using System.Windows.Shapes;
 
 namespace OutstandingReportGenerator.UI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ISqlData _db;
 
-        public MainWindow(ISqlData db)
+        public MainWindow()
         {
             InitializeComponent();
-            _db = db;
-        }
-
-        private void getData_Click(object sender, RoutedEventArgs e)
-        {
-            _db.SaveCSVData(@"C:\Users\Sider\Desktop\test\outstanding.csv");
         }
     }
 }
+
+//public partial class MainWindow : Window
+//{
+//    private readonly ISqlData _db;
+
+//    public MainWindow(ISqlData db)
+//    {
+//        InitializeComponent();
+//        _db = db;
+//    }
+
+//    private void getData_Click(object sender, RoutedEventArgs e)
+//    {
+//        _db.SaveCSVData(@"C:\Users\Sider\Desktop\test\outstanding.csv");
+//    }
+//}
