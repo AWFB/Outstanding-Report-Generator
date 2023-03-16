@@ -12,7 +12,7 @@ public class OutstandingTestsViewModel : ViewModelBase
     public LaboratoryListViewModel LaboratoryListViewModel { get; }
     public OutstandingTestsTableViewModel OutstandingTestsTableViewModel { get; }
 
-    public ICommand ImportCsvFileCommand { get; }
+    //public ICommand ImportCsvFileCommand { get; }
 
     public OutstandingTestsViewModel()
     {

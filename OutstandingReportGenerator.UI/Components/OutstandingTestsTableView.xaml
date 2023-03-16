@@ -12,7 +12,7 @@
         <Border BorderBrush="Black" BorderThickness="1">
 
             <Grid>
-                <ListView BorderThickness="0" FontWeight="Bold">
+                <ListView BorderThickness="0" FontWeight="Bold" ItemsSource="{Binding OutstandingItemsVM}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
