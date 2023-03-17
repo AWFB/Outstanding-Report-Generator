@@ -38,7 +38,7 @@ namespace OutstandingReportGenerator.UI
             await AppHost!.StartAsync();
 
             var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
-            startupForm.DataContext = new OutstandingTestsViewModel();
+            startupForm.DataContext = new OutstandingTestsVM();
             startupForm.Show();
 
 

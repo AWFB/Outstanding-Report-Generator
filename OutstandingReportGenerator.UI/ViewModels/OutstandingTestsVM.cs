@@ -7,16 +7,16 @@ using System.Windows.Input;
 
 namespace OutstandingReportGenerator.UI.ViewModels;
 
-public class OutstandingTestsViewModel : ViewModelBase
+public class OutstandingTestsVM : ViewModelBase
 {
     public LaboratoryListViewModel LaboratoryListViewModel { get; }
-    public OutstandingTestsTableViewModel OutstandingTestsTableViewModel { get; }
+    public OutstandingTestsTableVM OutstandingTestsTableViewModel { get; }
 
     //public ICommand ImportCsvFileCommand { get; }
 
-    public OutstandingTestsViewModel()
+    public OutstandingTestsVM()
     {
         LaboratoryListViewModel = new LaboratoryListViewModel();
-        OutstandingTestsTableViewModel = new OutstandingTestsTableViewModel();
+        OutstandingTestsTableViewModel = new OutstandingTestsTableVM();
     }
 }
