@@ -1,4 +1,5 @@
 ﻿using OutstandingReportGenerator.UI.Models;
+using OutstandingReportGenerator.UI.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,19 +12,17 @@ namespace OutstandingReportGenerator.UI.ViewModels;
 public class OutstandingTestsTableVM : ViewModelBase
 {
     private readonly ObservableCollection<OutstandingItemVM> _outstandingItemVM;
+    private readonly SelectedLabStore _selectedLabStore;
 
     // Binding for table data
     public IEnumerable<OutstandingItemVM> Outstanding => _outstandingItemVM;
 
-    public OutstandingTestsTableVM()
+    public OutstandingTestsTableVM(SelectedLabStore selectedLabStore)
     {
         _outstandingItemVM = new ObservableCollection<OutstandingItemVM>();
+        _selectedLabStore = selectedLabStore;
 
-        _outstandingItemVM.Add(new OutstandingItemVM( new OutstandingDetailsModel(
-            "PRU", "AH123456", "Will Riker", "01/12/1985", "555 555 1234", "Albumin")));
-        _outstandingItemVM.Add(new OutstandingItemVM(new OutstandingDetailsModel(
-            "RLUH", "AH123457", "Geordi La Forge", "18/05/1985", "555 555 4567", "Calcium")));
-        _outstandingItemVM.Add(new OutstandingItemVM(new OutstandingDetailsModel(
-            "CMFT", "AH123458", "Jean-Luc Picard", "02/06/1985", "555 555 8901", "AST")));
+        _outstandingItemVM.Add(new OutstandingItemVM(_selectedLabStore));
+        
     }
 }

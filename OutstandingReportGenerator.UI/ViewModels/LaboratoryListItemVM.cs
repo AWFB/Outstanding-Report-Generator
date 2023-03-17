@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OutstandingReportGenerator.UI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,13 @@ namespace OutstandingReportGenerator.UI.ViewModels;
 
 public class LaboratoryListItemViewModel : ViewModelBase
 {
-    public string LabName { get; set; }
+    public OutstandingDetailsModel OutstandingDetailsModel { get; }
+
+    public string LabName => OutstandingDetailsModel.LabName;
     public int NumberOfOutstandingTests { get; set; }
 
-    public LaboratoryListItemViewModel(string labName)
+    public LaboratoryListItemViewModel(OutstandingDetailsModel outstandingDetailsModel)
     {
-        LabName = labName;
+        OutstandingDetailsModel = outstandingDetailsModel;
     }
-
 }

@@ -25,7 +25,7 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0" ItemsSource="{Binding LaboratoryListItemViewModels}">
+                <ListView BorderThickness="0" ItemsSource="{Binding LaboratoryListItemViewModels}" SelectedItem="{Binding SelectedLaboratoryListingItemVM}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

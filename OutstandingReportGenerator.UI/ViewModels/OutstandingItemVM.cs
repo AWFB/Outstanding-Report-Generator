@@ -1,26 +1,39 @@
-﻿using OutstandingReportGenerator.UI.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OutstandingReportGenerator.UI.Stores;
 
 namespace OutstandingReportGenerator.UI.ViewModels
 {
     public class OutstandingItemVM : ViewModelBase
     {
-        private readonly OutstandingDetailsModel _outstandingDetailsModel;
+        private readonly SelectedLabStore _selectedLabStore;
 
-        public string LabName => _outstandingDetailsModel.LabName;
-        public string AHNumber => _outstandingDetailsModel.AHNumber;
-        public string PatientName => _outstandingDetailsModel.PatientName;
-        public string DateOfBirth => _outstandingDetailsModel.DateOfBirth;
-        public string NHSNumber => _outstandingDetailsModel.NHSNumber;
-        public string TestName => _outstandingDetailsModel.LabName;
+        public string LabName => _selectedLabStore.SelectedLaboratory.LabName;
+        public string AHNumber => _selectedLabStore.SelectedLaboratory.AHNumber;
+        public string PatientName => _selectedLabStore.SelectedLaboratory.PatientName;
+        public string DateOfBirth => _selectedLabStore.SelectedLaboratory.DateOfBirth;
+        public string NHSNumber => _selectedLabStore.SelectedLaboratory.NHSNumber;
+        public string TestName => _selectedLabStore.SelectedLaboratory.TestName;
 
-        public OutstandingItemVM(OutstandingDetailsModel outstandingDetailsModel)
+        public OutstandingItemVM(SelectedLabStore selectedLabStore)
         {
-            _outstandingDetailsModel = outstandingDetailsModel;
+            _selectedLabStore = selectedLabStore;
+
+            _selectedLabStore.SelectedLaboratoryChanged += SelectedLabStore_SelectedLaboratoryChanged;
+        }
+
+        protected override void Dispose()
+        {
+            _selectedLabStore.SelectedLaboratoryChanged -= SelectedLabStore_SelectedLaboratoryChanged;
+            base.Dispose();
+        }
+
+        private void SelectedLabStore_SelectedLaboratoryChanged()
+        {
+            OnPropertyChanged(nameof(LabName));
+            OnPropertyChanged(nameof(AHNumber));
+            OnPropertyChanged(nameof(PatientName));
+            OnPropertyChanged(nameof(DateOfBirth));
+            OnPropertyChanged(nameof(NHSNumber));
+            OnPropertyChanged(nameof(TestName));
         }
     }
 }
