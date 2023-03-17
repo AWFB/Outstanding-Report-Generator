@@ -7,20 +7,17 @@ using System.Threading.Tasks;
 
 namespace OutstandingReportGenerator.UI.Models
 {
-    public class OutstandingDetailsModel
+    public class Item
     {
 
-        public OutstandingDetailsModel(string labName, string aHNumber, string patientName, string dateOfBirth, string nHSNumber, string testName)
+        public Item(string aHNumber, string patientName, string dateOfBirth, string nhsNumber, string testName)
         {
-            LabName = labName;
             AHNumber = aHNumber;
             PatientName = patientName;
             DateOfBirth = dateOfBirth;
-            NHSNumber = nHSNumber;
+            NHSNumber = nhsNumber;
             TestName = testName;
         }
-
-        public string LabName { get; }
         public string AHNumber { get; }
         public string PatientName { get; }
         public string DateOfBirth { get; }

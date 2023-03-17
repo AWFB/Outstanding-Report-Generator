@@ -9,13 +9,12 @@ namespace OutstandingReportGenerator.UI.ViewModels;
 
 public class LaboratoryListItemViewModel : ViewModelBase
 {
-    public OutstandingDetailsModel OutstandingDetailsModel { get; }
+  public String Name { get; private set; }
+  public Labratory Labratory { get; private set; }
 
-    public string LabName => OutstandingDetailsModel.LabName;
-    public int NumberOfOutstandingTests { get; set; }
-
-    public LaboratoryListItemViewModel(OutstandingDetailsModel outstandingDetailsModel)
-    {
-        OutstandingDetailsModel = outstandingDetailsModel;
-    }
+  public LaboratoryListItemViewModel(Labratory labratory)
+  {
+    Name = labratory.Name;
+    Labratory = labratory;
+  }
 }

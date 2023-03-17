@@ -15,7 +15,7 @@ public class OutstandingTestsVM : ViewModelBase
 
     //public ICommand ImportCsvFileCommand { get; }
 
-    public OutstandingTestsVM(SelectedLabStore _selectedLabStore)
+    public OutstandingTestsVM(AppStore _selectedLabStore)
     {
         LaboratoryListViewModel = new LaboratoryListViewModel(_selectedLabStore);
         OutstandingTestsTableViewModel = new OutstandingTestsTableVM(_selectedLabStore);

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace OutstandingReportGenerator.UI.Stores
 {
-    public class SelectedLabStore
+    public class AppStore
     {
-		private OutstandingDetailsModel _selectedLaboratory;
+		private Labratory _selectedLaboratory;
+		private IEnumerable<Labratory> _laboratories;
 		
 		
-		public OutstandingDetailsModel SelectedLaboratory
+		public Labratory SelectedLaboratory
         {
 			get
 			{
@@ -25,6 +26,17 @@ namespace OutstandingReportGenerator.UI.Stores
 			}
 		}
 
-		public event Action SelectedLaboratoryChanged;
-	}
+		public IEnumerable<Labratory> Labratories
+    {
+			get { return _laboratories; }
+    }
+
+		public event Action? SelectedLaboratoryChanged;
+
+		public AppStore(IEnumerable<Labratory> labratories)
+    {
+			_laboratories = labratories;
+			_selectedLaboratory = labratories.First();
+    }
+  }
 }

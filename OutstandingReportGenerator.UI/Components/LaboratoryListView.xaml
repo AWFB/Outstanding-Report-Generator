@@ -40,7 +40,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding LabName}" />
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                     <Button Content="Select" HorizontalAlignment="Right" />
                                 </Grid>
                             </Border>

@@ -11,18 +11,34 @@ namespace OutstandingReportGenerator.UI.ViewModels;
 
 public class OutstandingTestsTableVM : ViewModelBase
 {
-    private readonly ObservableCollection<OutstandingItemVM> _outstandingItemVM;
-    private readonly SelectedLabStore _selectedLabStore;
+    private readonly ObservableCollection<OutstandingItemVM> _outstandingItemsVM;
+    private readonly AppStore _appStore;
 
     // Binding for table data
-    public IEnumerable<OutstandingItemVM> Outstanding => _outstandingItemVM;
+    public IEnumerable<OutstandingItemVM> OutstandingItems => _outstandingItemsVM;
 
-    public OutstandingTestsTableVM(SelectedLabStore selectedLabStore)
+    public OutstandingTestsTableVM(AppStore appStore)
     {
-        _outstandingItemVM = new ObservableCollection<OutstandingItemVM>();
-        _selectedLabStore = selectedLabStore;
 
-        _outstandingItemVM.Add(new OutstandingItemVM(_selectedLabStore));
-        
+    _outstandingItemsVM = new ObservableCollection<OutstandingItemVM>();
+    _appStore = appStore;
+      _appStore.SelectedLaboratoryChanged += _appStore_SelectedLaboratoryChanged;
+    _appStore_SelectedLaboratoryChanged();
     }
+
+  protected override void Dispose()
+  {
+    _appStore.SelectedLaboratoryChanged -= _appStore_SelectedLaboratoryChanged;
+    base.Dispose();
+  }
+
+
+  private void _appStore_SelectedLaboratoryChanged()
+  {
+    _outstandingItemsVM.Clear();
+    foreach (var item in _appStore.SelectedLaboratory.Items)
+    {
+      _outstandingItemsVM.Add(new OutstandingItemVM(item));
+    }
+  }
 }
