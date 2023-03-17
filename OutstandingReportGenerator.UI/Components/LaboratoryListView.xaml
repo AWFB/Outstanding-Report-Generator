@@ -25,7 +25,7 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0" ItemsSource="{Binding LaboratoryListItemViewModels}">
+                <ListView BorderThickness="0" ItemsSource="{Binding LaboratoryListItemViewModels}" SelectedItem="{Binding SelectedLaboratoryListingItemVM}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -40,7 +40,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding LabName}" />
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                     <Button Content="Select" HorizontalAlignment="Right" />
                                 </Grid>
                             </Border>

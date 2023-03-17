@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OutstandingReportGenerator.UI.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,9 @@ public class OutstandingTestsVM : ViewModelBase
 
     //public ICommand ImportCsvFileCommand { get; }
 
-    public OutstandingTestsVM()
+    public OutstandingTestsVM(AppStore _selectedLabStore)
     {
-        LaboratoryListViewModel = new LaboratoryListViewModel();
-        OutstandingTestsTableViewModel = new OutstandingTestsTableVM();
+        LaboratoryListViewModel = new LaboratoryListViewModel(_selectedLabStore);
+        OutstandingTestsTableViewModel = new OutstandingTestsTableVM(_selectedLabStore);
     }
 }

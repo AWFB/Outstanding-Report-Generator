@@ -1,4 +1,5 @@
 ﻿using OutstandingReportGenerator.UI.Models;
+using OutstandingReportGenerator.UI.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,20 +11,34 @@ namespace OutstandingReportGenerator.UI.ViewModels;
 
 public class OutstandingTestsTableVM : ViewModelBase
 {
-    private readonly ObservableCollection<OutstandingItemVM> _outstandingItemVM;
+    private readonly ObservableCollection<OutstandingItemVM> _outstandingItemsVM;
+    private readonly AppStore _appStore;
 
     // Binding for table data
-    public IEnumerable<OutstandingItemVM> Outstanding => _outstandingItemVM;
+    public IEnumerable<OutstandingItemVM> OutstandingItems => _outstandingItemsVM;
 
-    public OutstandingTestsTableVM()
+    public OutstandingTestsTableVM(AppStore appStore)
     {
-        _outstandingItemVM = new ObservableCollection<OutstandingItemVM>();
 
-        _outstandingItemVM.Add(new OutstandingItemVM( new OutstandingDetailsModel(
-            "PRU", "AH123456", "Will Riker", "01/12/1985", "555 555 1234", "Albumin")));
-        _outstandingItemVM.Add(new OutstandingItemVM(new OutstandingDetailsModel(
-            "RLUH", "AH123457", "Geordi La Forge", "18/05/1985", "555 555 4567", "Calcium")));
-        _outstandingItemVM.Add(new OutstandingItemVM(new OutstandingDetailsModel(
-            "CMFT", "AH123458", "Jean-Luc Picard", "02/06/1985", "555 555 8901", "AST")));
+    _outstandingItemsVM = new ObservableCollection<OutstandingItemVM>();
+    _appStore = appStore;
+      _appStore.SelectedLaboratoryChanged += _appStore_SelectedLaboratoryChanged;
+    _appStore_SelectedLaboratoryChanged();
     }
+
+  protected override void Dispose()
+  {
+    _appStore.SelectedLaboratoryChanged -= _appStore_SelectedLaboratoryChanged;
+    base.Dispose();
+  }
+
+
+  private void _appStore_SelectedLaboratoryChanged()
+  {
+    _outstandingItemsVM.Clear();
+    foreach (var item in _appStore.SelectedLaboratory.Items)
+    {
+      _outstandingItemsVM.Add(new OutstandingItemVM(item));
+    }
+  }
 }
