@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OutstandingReportGenerator.UI.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace OutstandingReportGenerator.UI.Models
 {
     public class OutstandingDetailsModel
     {
+
         public OutstandingDetailsModel(string labName, string aHNumber, string patientName, string dateOfBirth, string nHSNumber, string testName)
         {
             LabName = labName;
