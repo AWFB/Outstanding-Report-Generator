@@ -1,11 +1,7 @@
 ﻿using OutstandingReportGenerator.UI.Models;
 using OutstandingReportGenerator.UI.Stores;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OutstandingReportGenerator.UI.ViewModels
 {
@@ -35,7 +31,6 @@ namespace OutstandingReportGenerator.UI.ViewModels
             }
         }
 
-
         public LaboratoryListViewModel(SelectedLabStore selectedLabStore)
         {
             _selectedLabStore = selectedLabStore;
@@ -45,12 +40,15 @@ namespace OutstandingReportGenerator.UI.ViewModels
                 ("PRU", "AH123456", "Dave Lister", "01/12/1987", "555 555 1234", "Calcium")),
 
                 new LaboratoryListItemViewModel(new OutstandingDetailsModel
-                ("RLUH", "AH123456", "WIll Riker", "01/12/1987", "555 555 1234", "Albumin"))
+                ("RLUH", "AH123457", "WIll Riker", "01/12/1987", "555 555 1235", "Albumin")),
+
+                new LaboratoryListItemViewModel(new OutstandingDetailsModel
+                ("BARTS", "AH123458", "Worf, Son of Mogh ", "01/12/1965", "555 555 1236", "Testosterone"))
             };
 
 
         }
 
-        
+
     }
 }
