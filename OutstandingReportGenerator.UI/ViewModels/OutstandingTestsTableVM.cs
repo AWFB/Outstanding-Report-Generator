@@ -21,8 +21,20 @@ public class OutstandingTestsTableVM : ViewModelBase
     {
         _outstandingItemVM = new ObservableCollection<OutstandingItemVM>();
         _selectedLabStore = selectedLabStore;
-
-        _outstandingItemVM.Add(new OutstandingItemVM(_selectedLabStore));
         
+        _selectedLabStore.SelectedLaboratoryChanged += _selectedLabStore_SelectedLaboratoryChanged;
+    }
+
+    public override void Dispose()
+    {
+        _selectedLabStore.SelectedLaboratoryChanged -= _selectedLabStore_SelectedLaboratoryChanged;
+    }
+
+    private void _selectedLabStore_SelectedLaboratoryChanged()
+    {
+        _outstandingItemVM.Clear();
+        _outstandingItemVM.Add(new OutstandingItemVM(_selectedLabStore));
+
+        //_selectedLabStore.SelectedLaboratoryChanged -= _selectedLabStore_SelectedLaboratoryChanged;
     }
 }

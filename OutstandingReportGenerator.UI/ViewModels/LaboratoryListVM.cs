@@ -42,7 +42,7 @@ namespace OutstandingReportGenerator.UI.ViewModels
             _laboratoryListItemViewModels = new ObservableCollection<LaboratoryListItemViewModel>
             {
                 new LaboratoryListItemViewModel(new OutstandingDetailsModel
-                ("PRU", "AH123456", "WIll Riker", "01/12/1987", "555 555 1234", "Albumin")),
+                ("PRU", "AH123456", "Dave Lister", "01/12/1987", "555 555 1234", "Calcium")),
 
                 new LaboratoryListItemViewModel(new OutstandingDetailsModel
                 ("RLUH", "AH123456", "WIll Riker", "01/12/1987", "555 555 1234", "Albumin"))

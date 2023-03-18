@@ -17,10 +17,9 @@ namespace OutstandingReportGenerator.UI.ViewModels
         {
             _selectedLabStore = selectedLabStore;
 
-            _selectedLabStore.SelectedLaboratoryChanged += SelectedLabStore_SelectedLaboratoryChanged;
         }
 
-        protected override void Dispose()
+        public override void Dispose()
         {
             _selectedLabStore.SelectedLaboratoryChanged -= SelectedLabStore_SelectedLaboratoryChanged;
             base.Dispose();
