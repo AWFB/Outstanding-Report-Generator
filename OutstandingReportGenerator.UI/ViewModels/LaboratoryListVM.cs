@@ -1,54 +1,53 @@
 ﻿using OutstandingReportGenerator.UI.Models;
 using OutstandingReportGenerator.UI.Stores;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace OutstandingReportGenerator.UI.ViewModels
 {
-    public class LaboratoryListViewModel : ViewModelBase
+    public class LaboratoryListVM : ViewModelBase
     {
-        // Observable collection used as UI is auto updated on delete or adding
-        private readonly ObservableCollection<LaboratoryListItemViewModel> _laboratoryListItemViewModels;
-        private readonly SelectedLabStore _selectedLabStore;
+        private readonly DataStore _dataStore;
 
-        public IEnumerable<LaboratoryListItemViewModel> LaboratoryListItemViewModels => _laboratoryListItemViewModels;
+        private ObservableCollection<OutstandingDetailsModel> _labNames;
 
-        //SelectedLaboratoryListingItemVM
+        public ObservableCollection<OutstandingDetailsModel> Outstanding => _dataStore.Outstanding;
 
-        private LaboratoryListItemViewModel _selectedLaboratoryListingItemVM;
-        public LaboratoryListItemViewModel SelectedLaboratoryListingItemVM
+        public ObservableCollection<OutstandingDetailsModel> LabNames => _labNames;
+        //{
+        //    get { return _labNames; }
+        //    set
+        //    {
+        //        if (_labNames != value)
+        //        {
+        //            _labNames = value;
+        //            OnPropertyChanged(nameof(LabNames));
+        //        }
+        //    }
+        //}
+
+        // prop for selected item 
+
+
+        public LaboratoryListVM(DataStore dataStore)
         {
-            get
-            {
-                return _selectedLaboratoryListingItemVM;
-            }
-            set
-            {
-                _selectedLaboratoryListingItemVM = value;
-                OnPropertyChanged(nameof(SelectedLaboratoryListingItemVM));
-
-                _selectedLabStore.SelectedLaboratory = _selectedLaboratoryListingItemVM.OutstandingDetailsModel;
-            }
+            _dataStore = dataStore;
+            _labNames = new ObservableCollection<OutstandingDetailsModel>();
         }
 
-        public LaboratoryListViewModel(SelectedLabStore selectedLabStore)
+        internal void UpdateListOfLabs(ObservableCollection<OutstandingDetailsModel> outstanding)
         {
-            _selectedLabStore = selectedLabStore;
-            _laboratoryListItemViewModels = new ObservableCollection<LaboratoryListItemViewModel>
+            var filtered = outstanding
+                     .GroupBy(o => o.LabName)
+                     .Select(g => g.First())
+                     .OrderBy(o => o.LabName);
+
+            foreach (var item in filtered)
             {
-                new LaboratoryListItemViewModel(new OutstandingDetailsModel
-                ("PRU", "AH123456", "Dave Lister", "01/12/1987", "555 555 1234", "Calcium")),
-
-                new LaboratoryListItemViewModel(new OutstandingDetailsModel
-                ("RLUH", "AH123457", "WIll Riker", "01/12/1987", "555 555 1235", "Albumin")),
-
-                new LaboratoryListItemViewModel(new OutstandingDetailsModel
-                ("BARTS", "AH123458", "Worf, Son of Mogh ", "01/12/1965", "555 555 1236", "Testosterone"))
-            };
-
-
+                _labNames.Add(item);
+            }
         }
-
-
     }
 }
+
+

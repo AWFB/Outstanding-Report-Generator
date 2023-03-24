@@ -1,13 +1,11 @@
-﻿<UserControl
-    x:Class="OutstandingReportGenerator.UI.Components.LaboratoryListView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:OutstandingReportGenerator.UI.Components"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    mc:Ignorable="d">
+﻿<UserControl x:Class="OutstandingReportGenerator.UI.Components.LaboratoryListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OutstandingReportGenerator.UI.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Border
             BorderBrush="{StaticResource BorderPrimary}"
@@ -25,7 +23,7 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0" ItemsSource="{Binding LaboratoryListItemViewModels}" SelectedItem="{Binding SelectedLaboratoryListingItemVM}">
+                <ListView BorderThickness="0" ItemsSource="{Binding LabNames}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -47,7 +45,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <!--Define how the list is to be displayed-->
-                    
+
                 </ListView>
             </Grid>
             <!--  Round corners properly  -->

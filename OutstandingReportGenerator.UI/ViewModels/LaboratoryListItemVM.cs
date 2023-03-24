@@ -1,21 +1,24 @@
 ﻿using OutstandingReportGenerator.UI.Models;
+using OutstandingReportGenerator.UI.Stores;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OutstandingReportGenerator.UI.ViewModels;
-
-public class LaboratoryListItemViewModel : ViewModelBase
+namespace OutstandingReportGenerator.UI.ViewModels
 {
-    public OutstandingDetailsModel OutstandingDetailsModel { get; }
-
-    public string LabName => OutstandingDetailsModel.LabName;
-    public int NumberOfOutstandingTests { get; set; }
-
-    public LaboratoryListItemViewModel(OutstandingDetailsModel outstandingDetailsModel)
+    public class LaboratoryListItemVM : ViewModelBase
     {
-        OutstandingDetailsModel = outstandingDetailsModel;
+        public string LabName { get; set; }
+        public ObservableCollection<OutstandingDetailsModel> Items { get; }
+
+        public LaboratoryListItemVM(string laboratory, ObservableCollection<OutstandingDetailsModel> items)
+        {
+            LabName = laboratory;
+            Items = items;
+        }
+
     }
 }

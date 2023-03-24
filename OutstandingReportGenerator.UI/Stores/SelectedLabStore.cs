@@ -9,22 +9,23 @@ namespace OutstandingReportGenerator.UI.Stores
 {
     public class SelectedLabStore
     {
-		private OutstandingDetailsModel _selectedLaboratory;
-		
-		
-		public OutstandingDetailsModel SelectedLaboratory
-        {
-			get
-			{
-				return _selectedLaboratory;
-			}
-			set
-			{
-                _selectedLaboratory = value;
-				SelectedLaboratoryChanged?.Invoke();
-			}
-		}
 
-		public event Action SelectedLaboratoryChanged;
-	}
+        // public property to get/set the selected lab name
+        private OutstandingDetailsModel _selectedLabName;
+        public OutstandingDetailsModel SelectedLabName
+        {
+            get { return _selectedLabName; }
+            set
+            {
+                if (_selectedLabName != value)
+                {
+                    _selectedLabName = value;
+                    SelectedLabNameChanged?.Invoke();
+                    // update the filtered outstanding list whenever the selected lab name changes
+
+                }
+            }
+        }
+        public event Action SelectedLabNameChanged;
+    }
 }

@@ -1,40 +1,36 @@
-﻿using OutstandingReportGenerator.UI.Models;
+﻿using OutstandingReportGenerator.Data;
+using OutstandingReportGenerator.UI.Models;
 using OutstandingReportGenerator.UI.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace OutstandingReportGenerator.UI.ViewModels;
 
 public class OutstandingTestsTableVM : ViewModelBase
 {
-    private readonly ObservableCollection<OutstandingItemVM> _outstandingItemVM;
-    private readonly SelectedLabStore _selectedLabStore;
+    private DataStore _dataStore;
 
-    // Binding for table data
-    public IEnumerable<OutstandingItemVM> Outstanding => _outstandingItemVM;
+    public ObservableCollection<OutstandingDetailsModel> Outstanding => _dataStore.Outstanding;
 
-    public OutstandingTestsTableVM(SelectedLabStore selectedLabStore)
+    //public ICollectionView LabCollectionView { get; }
+
+    public OutstandingTestsTableVM(DataStore dataStore)
     {
-        _outstandingItemVM = new ObservableCollection<OutstandingItemVM>();
-        _selectedLabStore = selectedLabStore;
-        
-        _selectedLabStore.SelectedLaboratoryChanged += _selectedLabStore_SelectedLaboratoryChanged;
-    }
+        _dataStore = dataStore;
 
-    public override void Dispose()
-    {
-        _selectedLabStore.SelectedLaboratoryChanged -= _selectedLabStore_SelectedLaboratoryChanged;
-    }
 
-    private void _selectedLabStore_SelectedLaboratoryChanged()
-    {
-        _outstandingItemVM.Clear();
-        _outstandingItemVM.Add(new OutstandingItemVM(_selectedLabStore));
+        //LabCollectionView = CollectionViewSource.GetDefaultView(_dataStore.Outstanding);
+        //LabCollectionView.Filter = item =>
+        //{
+        //    OutstandingDetailsModel lab = item as OutstandingDetailsModel;
+        //    return Outstanding.Count(x => x.LabName == lab.LabName) == 1;
 
-        //_selectedLabStore.SelectedLaboratoryChanged -= _selectedLabStore_SelectedLaboratoryChanged;
+        //};
     }
 }

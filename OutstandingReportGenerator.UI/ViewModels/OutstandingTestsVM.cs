@@ -1,4 +1,5 @@
-﻿using OutstandingReportGenerator.UI.Stores;
+﻿using OutstandingReportGenerator.UI.Commands;
+using OutstandingReportGenerator.UI.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,16 @@ namespace OutstandingReportGenerator.UI.ViewModels;
 
 public class OutstandingTestsVM : ViewModelBase
 {
-    public LaboratoryListViewModel LaboratoryListViewModel { get; }
-    public OutstandingTestsTableVM OutstandingTestsTableViewModel { get; }
+    public OutstandingTestsTableVM OutstandingTestsTableVM { get; }
+    public LaboratoryListVM LaboratoryListVM { get; }
 
-    //public ICommand ImportCsvFileCommand { get; }
+    public ICommand SubmitCommand { get; }
 
-    public OutstandingTestsVM(SelectedLabStore _selectedLabStore)
+    public OutstandingTestsVM(DataStore dataStore)
     {
-        LaboratoryListViewModel = new LaboratoryListViewModel(_selectedLabStore);
-        OutstandingTestsTableViewModel = new OutstandingTestsTableVM(_selectedLabStore);
+        
+        OutstandingTestsTableVM = new OutstandingTestsTableVM(dataStore);
+        LaboratoryListVM = new LaboratoryListVM(dataStore);
+        SubmitCommand = new ImportOutstandingCommand(dataStore, LaboratoryListVM);
     }
 }

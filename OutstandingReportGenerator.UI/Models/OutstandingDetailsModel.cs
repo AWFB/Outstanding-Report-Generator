@@ -4,20 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OutstandingReportGenerator.Data;
 
 namespace OutstandingReportGenerator.UI.Models
 {
     public class OutstandingDetailsModel
     {
-
-        public OutstandingDetailsModel(string labName, string aHNumber, string patientName, string dateOfBirth, string nHSNumber, string testName)
-        {
-            LabName = labName;
-            AHNumber = aHNumber;
-            PatientName = patientName;
-            DateOfBirth = dateOfBirth;
-            NHSNumber = nHSNumber;
-            TestName = testName;
+        public OutstandingDetailsModel(CSVInputModel inputModel) {
+            LabName = inputModel.RefLabName;
+            AHNumber = inputModel.UnitNumber;
+            PatientName = inputModel.PatientName;
+            DateOfBirth = inputModel.DateOfBirth;
+            NHSNumber = inputModel.NHSNumber;
+            TestName = inputModel.TestRequested;
         }
 
         public string LabName { get; }
