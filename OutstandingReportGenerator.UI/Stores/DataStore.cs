@@ -15,8 +15,6 @@ namespace OutstandingReportGenerator.UI.Stores
     public class DataStore
     {
         private readonly ObservableCollection<OutstandingDetailsModel> _outstanding;
-
-
         public ObservableCollection<OutstandingDetailsModel> Outstanding => _outstanding;
 
         public DataStore()

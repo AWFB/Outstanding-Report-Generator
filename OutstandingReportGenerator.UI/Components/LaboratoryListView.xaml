@@ -23,7 +23,7 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0" ItemsSource="{Binding LabNames}">
+                <ListView BorderThickness="0" ItemsSource="{Binding LabNames}" SelectedItem="{Binding SelectedLabName}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

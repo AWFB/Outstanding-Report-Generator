@@ -14,12 +14,13 @@ namespace OutstandingReportGenerator.UI.Commands
     {
         private readonly DataStore _dataStore;
         private readonly LaboratoryListVM _viewModel;
+        private readonly OutstandingTestsTableVM _tableViewModel;
 
-
-        public ImportOutstandingCommand(DataStore dataStore, LaboratoryListVM viewModel)
+        public ImportOutstandingCommand(DataStore dataStore, LaboratoryListVM viewModel, OutstandingTestsTableVM tableViewModel)
         {
             _dataStore = dataStore;
             _viewModel = viewModel;
+            _tableViewModel = tableViewModel;
         }
 
         public override void Execute(object? parameter)
@@ -34,7 +35,8 @@ namespace OutstandingReportGenerator.UI.Commands
                 _dataStore.Load(path);
             }
 
-            _viewModel.UpdateListOfLabs(_dataStore.Outstanding);
+            _viewModel.UpdateListOfLabs();
+            _tableViewModel.FilterOutstandingByLabName();
         }
     }
 }

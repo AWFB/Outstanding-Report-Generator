@@ -16,11 +16,11 @@ public class OutstandingTestsVM : ViewModelBase
 
     public ICommand SubmitCommand { get; }
 
-    public OutstandingTestsVM(DataStore dataStore)
+    public OutstandingTestsVM(DataStore dataStore, SelectedLabStore selectedLabStore)
     {
         
-        OutstandingTestsTableVM = new OutstandingTestsTableVM(dataStore);
-        LaboratoryListVM = new LaboratoryListVM(dataStore);
-        SubmitCommand = new ImportOutstandingCommand(dataStore, LaboratoryListVM);
+        OutstandingTestsTableVM = new OutstandingTestsTableVM(dataStore, selectedLabStore);
+        LaboratoryListVM = new LaboratoryListVM(dataStore, selectedLabStore);
+        SubmitCommand = new ImportOutstandingCommand(dataStore, LaboratoryListVM, OutstandingTestsTableVM);
     }
 }

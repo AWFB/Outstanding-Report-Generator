@@ -9,9 +9,9 @@ namespace OutstandingReportGenerator.UI.Stores
 {
     public class SelectedLabStore
     {
-
-        // public property to get/set the selected lab name
         private OutstandingDetailsModel _selectedLabName;
+
+        // public property to get/set the selected lab name        
         public OutstandingDetailsModel SelectedLabName
         {
             get { return _selectedLabName; }

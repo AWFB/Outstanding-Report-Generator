@@ -8,36 +8,38 @@ namespace OutstandingReportGenerator.UI.ViewModels
     public class LaboratoryListVM : ViewModelBase
     {
         private readonly DataStore _dataStore;
-
+        private readonly SelectedLabStore _selectedLabStore;
         private ObservableCollection<OutstandingDetailsModel> _labNames;
 
-        public ObservableCollection<OutstandingDetailsModel> Outstanding => _dataStore.Outstanding;
-
         public ObservableCollection<OutstandingDetailsModel> LabNames => _labNames;
-        //{
-        //    get { return _labNames; }
-        //    set
-        //    {
-        //        if (_labNames != value)
-        //        {
-        //            _labNames = value;
-        //            OnPropertyChanged(nameof(LabNames));
-        //        }
-        //    }
-        //}
 
-        // prop for selected item 
-
-
-        public LaboratoryListVM(DataStore dataStore)
+        private OutstandingDetailsModel _selectedLabName;
+        public OutstandingDetailsModel SelectedLabName
         {
-            _dataStore = dataStore;
-            _labNames = new ObservableCollection<OutstandingDetailsModel>();
+            get
+            {
+                return _selectedLabName;
+            }
+            set
+            {
+                _selectedLabName = value;
+                OnPropertyChanged(nameof(SelectedLabName));
+
+                _selectedLabStore.SelectedLabName = value;
+            }
         }
 
-        internal void UpdateListOfLabs(ObservableCollection<OutstandingDetailsModel> outstanding)
+        public LaboratoryListVM(DataStore dataStore, SelectedLabStore selectedLabStore)
         {
-            var filtered = outstanding
+            _dataStore = dataStore;
+            _selectedLabStore = selectedLabStore;
+            _labNames = new ObservableCollection<OutstandingDetailsModel>();
+            _selectedLabName = selectedLabStore.SelectedLabName;
+        }
+
+        internal void UpdateListOfLabs()
+        {
+            var filtered = _dataStore.Outstanding
                      .GroupBy(o => o.LabName)
                      .Select(g => g.First())
                      .OrderBy(o => o.LabName);
@@ -47,6 +49,8 @@ namespace OutstandingReportGenerator.UI.ViewModels
                 _labNames.Add(item);
             }
         }
+
+
     }
 }
 
