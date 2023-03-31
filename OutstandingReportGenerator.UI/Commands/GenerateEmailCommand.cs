@@ -46,6 +46,7 @@ namespace OutstandingReportGenerator.UI.Commands
 
             StringBuilder html = new StringBuilder();
 
+            html.Append("<p>Hello,</p>");
             html.Append("<p>Our records indicate that the following tests are outstanding on our system:</p>");
 
             html.Append("<table style='border-collapse: collapse;'>");
