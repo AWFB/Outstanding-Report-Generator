@@ -36,16 +36,20 @@ public class OutstandingTestsTableVM : ViewModelBase
 
     public void FilterOutstandingByLabName()
     {
-        if (_selectedLabStore.SelectedLabName == null)
+        // If no lab is selected, default to showing all outstanding
+        if (_selectedLabStore.SelectedLab == null)
         {
             foreach (var item in _dataStore.Outstanding)
             {
                 _filteredOutstanding.Add(item);
             }
         }
+        // Filter list based on selected lab
         else
         {
-            var filter = _dataStore.Outstanding.Where(o => o.LabName == _selectedLabStore.SelectedLabName.LabName).ToList();
+            var filter = _dataStore.Outstanding
+                .Where(o => o.LabName == _selectedLabStore.SelectedLab.LabName)
+                .ToList();
 
             _filteredOutstanding.Clear();
             foreach (var item in filter)

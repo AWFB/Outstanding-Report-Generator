@@ -14,13 +14,15 @@ public class OutstandingTestsVM : ViewModelBase
     public OutstandingTestsTableVM OutstandingTestsTableVM { get; }
     public LaboratoryListVM LaboratoryListVM { get; }
 
-    public ICommand SubmitCommand { get; }
+    public ICommand ImportOutstandingCommand { get; }
+    public ICommand GenerateEmailCommand { get; }
 
     public OutstandingTestsVM(DataStore dataStore, SelectedLabStore selectedLabStore)
     {
         
         OutstandingTestsTableVM = new OutstandingTestsTableVM(dataStore, selectedLabStore);
         LaboratoryListVM = new LaboratoryListVM(dataStore, selectedLabStore);
-        SubmitCommand = new ImportOutstandingCommand(dataStore, LaboratoryListVM, OutstandingTestsTableVM);
+        ImportOutstandingCommand = new ImportOutstandingCommand(dataStore, LaboratoryListVM, OutstandingTestsTableVM);
+        GenerateEmailCommand = new GenerateEmailCommand(OutstandingTestsTableVM, selectedLabStore);
     }
 }

@@ -9,17 +9,17 @@ namespace OutstandingReportGenerator.UI.Stores
 {
     public class SelectedLabStore
     {
-        private OutstandingDetailsModel _selectedLabName;
+        private OutstandingDetailsModel _selectedLab;
 
         // public property to get/set the selected lab name        
-        public OutstandingDetailsModel SelectedLabName
+        public OutstandingDetailsModel SelectedLab
         {
-            get { return _selectedLabName; }
+            get { return _selectedLab; }
             set
             {
-                if (_selectedLabName != value)
+                if (_selectedLab != value)
                 {
-                    _selectedLabName = value;
+                    _selectedLab = value;
                     SelectedLabNameChanged?.Invoke();
                     // update the filtered outstanding list whenever the selected lab name changes
 

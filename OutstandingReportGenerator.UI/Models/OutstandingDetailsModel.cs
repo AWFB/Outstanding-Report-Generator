@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OutstandingReportGenerator.Data;
+using System.Windows.Input;
+using OutstandingReportGenerator.UI.Commands;
 
 namespace OutstandingReportGenerator.UI.Models
 {
     public class OutstandingDetailsModel
-    {
+    { 
         public OutstandingDetailsModel(CSVInputModel inputModel) {
             LabName = inputModel.RefLabName;
             AHNumber = inputModel.UnitNumber;

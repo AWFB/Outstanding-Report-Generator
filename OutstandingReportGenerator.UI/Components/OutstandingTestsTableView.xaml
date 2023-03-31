@@ -10,8 +10,8 @@
     mc:Ignorable="d">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1">
-
             <Grid>
+
                 <ListView BorderThickness="0" FontWeight="Bold" ItemsSource="{Binding Outstanding}">
 
                     <ListView.ItemContainerStyle>
@@ -72,11 +72,10 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-
+                            <!--  Table columns  -->
                         </GridView>
                     </ListView.View>
                 </ListView>
-
             </Grid>
         </Border>
     </Grid>

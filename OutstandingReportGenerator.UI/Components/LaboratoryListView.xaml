@@ -39,7 +39,8 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="{Binding LabName}" />
-                                    <TextBlock Text="Select" HorizontalAlignment="Right" />
+                                    
+                                    
                                 </Grid>
                             </Border>
                         </DataTemplate>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace OutstandingReportGenerator.UI.Commands
 {
@@ -31,8 +32,19 @@ namespace OutstandingReportGenerator.UI.Commands
 
             if (result == true)
             {
+                _dataStore.Outstanding.Clear();
+                _viewModel.LabNames.Clear();
+
                 string path = dialog.FileName;
-                _dataStore.Load(path);
+                try
+                {
+                    _dataStore.Load(path);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Failed to import CVS Data.", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
 
             _viewModel.UpdateListOfLabs();

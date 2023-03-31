@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -26,14 +27,16 @@
                 Grid.Column="0"
                 Margin="0,0,0,8"
                 FontSize="20"
-                Text="Outstanding Results by lab" />
+                Text="FIlter Results by lab:" />
+
             <Button
                 Grid.Column="1"
                 Margin="0,0,0,8"
+                Command="{Binding ImportOutstandingCommand}"
                 Content="Import"
-                FontSize="14"
-                Command="{Binding SubmitCommand}"/>
+                FontSize="14" />
         </Grid>
+
 
 
 
@@ -44,11 +47,26 @@
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
 
-            <components:LaboratoryListView Grid.Column="0" DataContext="{Binding LaboratoryListVM}"/>
+            <components:LaboratoryListView Grid.Column="0" DataContext="{Binding LaboratoryListVM}" />
             <components:OutstandingTestsTableView
                 Grid.Column="1"
                 Margin="15,0,0,0"
                 DataContext="{Binding OutstandingTestsTableVM}" />
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="1"
+                Margin="0,8,0,0"
+                Command="{Binding GenerateEmailCommand}"
+                Content="Generate Email"
+                FontSize="14" />
         </Grid>
 
 

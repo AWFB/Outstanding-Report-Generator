@@ -7,6 +7,7 @@ public class CsvDataAccess
 {
     public List<CSVInputModel> ReadCsvFromFile(string path)
     {
+
         List<CSVInputModel> results = new List<CSVInputModel>();
 
         using (var reader = new StreamReader(path))
@@ -21,5 +22,6 @@ public class CsvDataAccess
         }
 
         return results;
+
     }
 }
