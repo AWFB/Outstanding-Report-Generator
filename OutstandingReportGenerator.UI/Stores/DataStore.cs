@@ -27,7 +27,7 @@ namespace OutstandingReportGenerator.UI.Stores
             CsvDataAccess da = new CsvDataAccess();
 
             _outstanding.Clear();
-            foreach (var inputModel in da.ReadCsvFromFile(path)) 
+            foreach (var inputModel in CsvDataAccess.ReadCsvFromFile(path)) 
             {
                 _outstanding.Add(new OutstandingDetailsModel(inputModel));
             }

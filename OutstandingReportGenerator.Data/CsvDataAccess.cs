@@ -5,7 +5,7 @@ namespace OutstandingReportGenerator.Data;
 
 public class CsvDataAccess
 {
-    public List<CSVInputModel> ReadCsvFromFile(string path)
+    public static List<CSVInputModel> ReadCsvFromFile(string path)
     {
 
         List<CSVInputModel> results = new List<CSVInputModel>();
@@ -17,6 +17,11 @@ public class CsvDataAccess
 
             foreach (var item in records)
             {
+                // Exclude any outstanding test thats just a comment field
+                if (item.TestRequested.Contains("Comment"))
+                {
+                    continue;
+                }
                 results.Add(item);
             }
         }

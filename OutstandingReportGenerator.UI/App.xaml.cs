@@ -1,4 +1,6 @@
-﻿using OutstandingReportGenerator.Data;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using OutstandingReportGenerator.Data;
 using OutstandingReportGenerator.UI.Stores;
 using OutstandingReportGenerator.UI.ViewModels;
 using System.Collections.Generic;
@@ -8,24 +10,38 @@ namespace OutstandingReportGenerator.UI
 {
     public partial class App : Application
     {
-        private readonly DataStore _dataStore;
-        private readonly SelectedLabStore _selectedLabStore;
+        private readonly IHost _host;
 
         public App()
         {
-            _dataStore = new DataStore();
-            _selectedLabStore = new SelectedLabStore();
+            _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
+            {
+                services.AddSingleton<DataStore>();
+                services.AddSingleton<SelectedLabStore>();
+
+                services.AddSingleton<OutstandingTestsVM>();
+                services.AddSingleton(s => new MainWindow()
+                {
+                    DataContext = s.GetRequiredService<OutstandingTestsVM>()
+                });
+            })
+            .Build();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new MainWindow()
-            {
-                DataContext = new OutstandingTestsVM(_dataStore, _selectedLabStore)
-            };
+            _host.Start();
+
+            MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
             base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _host.Dispose();
+            base.OnExit(e);
         }
     }
 }

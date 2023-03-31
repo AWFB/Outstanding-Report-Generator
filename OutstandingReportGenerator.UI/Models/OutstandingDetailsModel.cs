@@ -19,6 +19,7 @@ namespace OutstandingReportGenerator.UI.Models
             DateOfBirth = inputModel.DateOfBirth;
             NHSNumber = inputModel.NHSNumber;
             TestName = inputModel.TestRequested;
+            Collected = inputModel.Collected;
         }
 
         public string LabName { get; }
@@ -27,5 +28,7 @@ namespace OutstandingReportGenerator.UI.Models
         public string DateOfBirth { get; }
         public string NHSNumber { get; }
         public string TestName { get; }
+
+        public string Collected { get; set; }
     }
 }

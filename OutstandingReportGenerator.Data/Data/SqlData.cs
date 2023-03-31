@@ -21,7 +21,7 @@ public class SqlData : ISqlData
     public void SaveCSVData(string path)
     {
         var data = new CsvDataAccess();
-        List<CSVInputModel> input = data.ReadCsvFromFile(path);
+        List<CSVInputModel> input = CsvDataAccess.ReadCsvFromFile(path);
 
         foreach (var item in input)
         {
@@ -46,7 +46,7 @@ public class SqlData : ISqlData
     public static List<CSVInputModel> LoadCsvData(string path)
     {
         var data = new CsvDataAccess();
-        List<CSVInputModel> output = data.ReadCsvFromFile(path);
+        List<CSVInputModel> output = CsvDataAccess.ReadCsvFromFile(path);
 
         return output;
     }

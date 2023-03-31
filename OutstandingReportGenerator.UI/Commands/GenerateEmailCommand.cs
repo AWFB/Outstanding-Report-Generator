@@ -56,6 +56,7 @@ namespace OutstandingReportGenerator.UI.Commands
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Date of Birth</th>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>NHS Number</th>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Test Name</th>");
+            html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Date Collected</th>");
             html.Append("</tr>");
             html.Append("</thead>");
             html.Append("<tbody>");
@@ -67,12 +68,14 @@ namespace OutstandingReportGenerator.UI.Commands
                 var dateOfBirth = item.DateOfBirth;
                 var nhsNumber = item.NHSNumber;
                 var testName = item.TestName;
+                var collectedDate = item.Collected;
 
                 html.Append("<tr>");
-                html.Append($"<td style='border: padding: 8px; text-align: center;'>{name}</td>");
-                html.Append($"<td style='border: padding: 8px; text-align: center;'>{dateOfBirth}</td>");
-                html.Append($"<td style='border: padding: 8px; text-align: center;'>{nhsNumber}</td>");
-                html.Append($"<td style='border: padding: 8px; text-align: center;'>{testName}</td>");
+                html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{name}</td>");
+                html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{dateOfBirth}</td>");
+                html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{nhsNumber}</td>");
+                html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{testName}</td>");
+                html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{collectedDate}</td>");
                 html.Append("</tr>");
             }
 

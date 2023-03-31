@@ -56,10 +56,10 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="200" Header="NHSNumber">
+                            <GridViewColumn Width="150" Header="NHSNumber">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Padding="0,0,20,0" Text="{Binding NHSNumber}" />
+                                        <TextBlock Padding="0,0,20,0" Text="{Binding NHSNumber}" HorizontalAlignment="Center" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -68,6 +68,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Padding="0,0,20,0" Text="{Binding TestName}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="200" Header="Date Collected">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Padding="0,0,20,0" Text="{Binding Collected}" HorizontalAlignment="Center" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
