@@ -1,4 +1,4 @@
-# Outstanding-Report-Generator
+# Outstanding-Report-Generator v1.0
 
 ### The problem:
 
@@ -8,4 +8,9 @@ This requires a member of staff to pull out data from the labs LIMS in the form 
 
 ### The solution:
 
-This application will allow the user to import the CSV file and filter outstanding tests by laboratory. Once the lab is selected, the user will be given the option to generate an email detailing the outstanding tests that are required. 
+This WPF application will allow the user to import the CSV file and filter outstanding tests by laboratory. Once the lab is selected, the user will be given the option to generate an email detailing the outstanding tests that are required. 
+
+### TODO:
+
+*Be able to edit the email template
+*Highlight tests that are in the LIMS but nt validated
