@@ -12,6 +12,8 @@ This requires a member of staff to pull out data from the labs LIMS in the form 
 
 This WPF application will allow the user to import the CSV file and filter outstanding tests by laboratory. Once the lab is selected, the user will be given the option to generate an email detailing the outstanding tests that are required. 
 
+An example CSV file is included which contains made up patient details.
+
 ### The technical stuff:
 
 -WPF application using MVVM architecture
