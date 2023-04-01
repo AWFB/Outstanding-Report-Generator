@@ -20,7 +20,7 @@ This WPF application will allow the user to import the CSV file and filter outst
 
 -The generated template is opened in outlook using Microsoft Office Interop
 
-### TODO:
+### Future features:
 
 -Be able to edit the email template
 
