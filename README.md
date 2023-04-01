@@ -1,5 +1,7 @@
 # Outstanding-Report-Generator v1.0
 
+![Screenshot](Capture.JPG)
+
 ### The problem:
 
 The laboratory sends various samples away to other specialist labs for analysis. Roughly 90% of the time the reports are returned with no issues. However, for whatever reason, some reports do not make it back and stay as outstanding in the system.
