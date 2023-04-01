@@ -1,5 +1,7 @@
 # Outstanding-Report-Generator v1.0
 
+![Screenshot](Capture.JPG)
+
 ### The problem:
 
 The laboratory sends various samples away to other specialist labs for analysis. Roughly 90% of the time the reports are returned with no issues. However, for whatever reason, some reports do not make it back and stay as outstanding in the system.
@@ -10,7 +12,15 @@ This requires a member of staff to pull out data from the labs LIMS in the form 
 
 This WPF application will allow the user to import the CSV file and filter outstanding tests by laboratory. Once the lab is selected, the user will be given the option to generate an email detailing the outstanding tests that are required. 
 
-### TODO:
+### The technical stuff:
+
+-WPF application using MVVM architecture
+
+-CSVhelper is used to parse the CSV file
+
+-The generated template is opened in outlook using Microsoft Office Interop
+
+### Future features:
 
 -Be able to edit the email template
 
