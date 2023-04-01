@@ -12,5 +12,6 @@ This WPF application will allow the user to import the CSV file and filter outst
 
 ### TODO:
 
-*Be able to edit the email template
-*Highlight tests that are in the LIMS but nt validated
+-Be able to edit the email template
+
+-Highlight tests that are in the LIMS but not validated
