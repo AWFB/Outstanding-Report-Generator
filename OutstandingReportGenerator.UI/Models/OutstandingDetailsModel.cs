@@ -1,18 +1,11 @@
-﻿using OutstandingReportGenerator.UI.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OutstandingReportGenerator.Data;
-using System.Windows.Input;
-using OutstandingReportGenerator.UI.Commands;
+﻿using OutstandingReportGenerator.Data;
 
 namespace OutstandingReportGenerator.UI.Models
 {
     public class OutstandingDetailsModel
-    { 
-        public OutstandingDetailsModel(CSVInputModel inputModel) {
+    {
+        public OutstandingDetailsModel(CSVInputModel inputModel)
+        {
             LabName = inputModel.RefLabName;
             AHNumber = inputModel.UnitNumber;
             PatientName = inputModel.PatientName;
@@ -20,6 +13,7 @@ namespace OutstandingReportGenerator.UI.Models
             NHSNumber = inputModel.NHSNumber;
             TestName = inputModel.TestRequested;
             Collected = inputModel.Collected;
+            SpecNumber = inputModel.SpecNumber;
         }
 
         public string LabName { get; }
@@ -28,7 +22,7 @@ namespace OutstandingReportGenerator.UI.Models
         public string DateOfBirth { get; }
         public string NHSNumber { get; }
         public string TestName { get; }
-
+        public string SpecNumber { get; set; }
         public string Collected { get; set; }
     }
 }

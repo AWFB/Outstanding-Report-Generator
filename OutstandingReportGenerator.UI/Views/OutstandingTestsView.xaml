@@ -27,7 +27,7 @@
                 Grid.Column="0"
                 Margin="0,0,0,8"
                 FontSize="20"
-                Text="FIlter Results by lab:" />
+                Text="Filter Results By Lab:" />
 
             <Button
                 Grid.Column="1"
@@ -59,7 +59,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Margin="10,30,0,0"
+                FontSize="12"
+                Text="Created by: Antony Beardsmore, Alder Hey" />
 
             <Button
                 Grid.Column="1"
@@ -67,6 +74,8 @@
                 Command="{Binding GenerateEmailCommand}"
                 Content="Generate Email"
                 FontSize="14" />
+
+
         </Grid>
 
 

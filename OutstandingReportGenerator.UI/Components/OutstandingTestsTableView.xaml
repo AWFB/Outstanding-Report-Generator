@@ -12,7 +12,10 @@
         <Border BorderBrush="Black" BorderThickness="1">
             <Grid>
 
-                <ListView BorderThickness="0" FontWeight="Bold" ItemsSource="{Binding Outstanding}">
+                <ListView
+                    BorderThickness="0"
+                    FontWeight="Bold"
+                    ItemsSource="{Binding Outstanding}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -28,6 +31,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Padding="0,0,20,0" Text="{Binding LabName}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="150" Header="Specimen Number">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Padding="0,0,20,0" Text="{Binding SpecNumber}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -59,7 +70,10 @@
                             <GridViewColumn Width="150" Header="NHSNumber">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Padding="0,0,20,0" Text="{Binding NHSNumber}" HorizontalAlignment="Center" />
+                                        <TextBlock
+                                            Padding="0,0,20,0"
+                                            HorizontalAlignment="Center"
+                                            Text="{Binding NHSNumber}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -75,7 +89,10 @@
                             <GridViewColumn Width="200" Header="Date Collected">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Padding="0,0,20,0" Text="{Binding Collected}" HorizontalAlignment="Center" />
+                                        <TextBlock
+                                            Padding="0,0,20,0"
+                                            HorizontalAlignment="Center"
+                                            Text="{Binding Collected}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
