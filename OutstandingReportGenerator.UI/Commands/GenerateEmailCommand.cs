@@ -40,6 +40,8 @@ namespace OutstandingReportGenerator.UI.Commands
 
         }
 
+        //TODO: I really need to put this in its own file. Tidy this up when I add the ability to create your own template
+
         private StringBuilder GenerateEmail()
         {
             var outstandingData = _outstandingTestsTableVM.Outstanding;
@@ -54,12 +56,15 @@ namespace OutstandingReportGenerator.UI.Commands
             html.Append("<tr>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Name</th>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Date of Birth</th>");
+            html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>AH Spec Number</th>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>NHS Number</th>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Test Name</th>");
             html.Append("<th style='border: 1px solid black; padding: 8px; text-align: center;'>Date Collected</th>");
             html.Append("</tr>");
             html.Append("</thead>");
             html.Append("<tbody>");
+
+            
 
 
             foreach (var item in outstandingData)
@@ -69,10 +74,12 @@ namespace OutstandingReportGenerator.UI.Commands
                 var nhsNumber = item.NHSNumber;
                 var testName = item.TestName;
                 var collectedDate = item.Collected;
+                var SpecNumber = item.SpecNumber;
 
                 html.Append("<tr>");
                 html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{name}</td>");
                 html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{dateOfBirth}</td>");
+                html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{SpecNumber}</td>");
                 html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{nhsNumber}</td>");
                 html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{testName}</td>");
                 html.Append($"<td style='border: 1px solid black; padding: 8px; text-align: center;'>{collectedDate}</td>");
@@ -82,6 +89,11 @@ namespace OutstandingReportGenerator.UI.Commands
             html.Append("</tr>");
             html.Append("</tbody>");
             html.Append("</table>");
+
+            html.Append("<p>If complete, please send copy reports by post or by replying to this email.</p>");
+            html.Append("<p>Kind Regards,</p>");
+            html.Append("<p></p>");
+            html.Append("<p>Duty Biochemist,</p>");
             return html;
         }
 
